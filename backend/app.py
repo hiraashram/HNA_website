@@ -30,12 +30,12 @@ def create_app():
         db.create_all()
         from models import Admin
         import bcrypt
-        if not Admin.query.filter_by(username='admin').first():
-            hashed = bcrypt.hashpw('admin123'.encode(), bcrypt.gensalt())
-            admin = Admin(username='admin', password=hashed.decode())
+        if not Admin.query.filter_by(username='hiraashram').first():
+            hashed = bcrypt.hashpw('@Hiraashram2010'.encode(), bcrypt.gensalt())
+            admin = Admin(username='hiraashram', password=hashed.decode())
             db.session.add(admin)
             db.session.commit()
-            print("Default admin created: admin / admin123")
+            
 
     return app
 
