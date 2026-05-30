@@ -19,9 +19,9 @@ def login():
     if not admin:
         return jsonify({'error': 'Invalid credentials'}), 401
 
-    if password != admin.password:
+    if not bcrypt.checkpw(password.encode('utf-8'), admin.password.encode('utf-8')):
         return jsonify({'error': 'Invalid credentials'}), 401
-    
+
     token = create_access_token(identity=str(admin.id))
     return jsonify({'token': token, 'username': admin.username}), 200
 
@@ -43,7 +43,7 @@ def change_password():
     if not new_password or len(new_password) < 6:
         return jsonify({'error': 'Password must be at least 6 characters'}), 400
     admin = Admin.query.get(int(admin_id))
-    hashed = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt())
-    admin.password = hashed.decode()
+    hashed = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+    admin.password = hashed.decode('utf-8')
     db.session.commit()
     return jsonify({'message': 'Password updated'}), 200
