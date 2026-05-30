@@ -19,9 +19,9 @@ def login():
     if not admin:
         return jsonify({'error': 'Invalid credentials'}), 401
 
-    if password != admin.password:
+    if not bcrypt.checkpw(password.encode(), admin.password.encode()):
         return jsonify({'error': 'Invalid credentials'}), 401
-    
+
     token = create_access_token(identity=str(admin.id))
     return jsonify({'token': token, 'username': admin.username}), 200
 
