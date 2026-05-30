@@ -74,9 +74,7 @@ export default function AdminLoginPage() {
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
-          <p className="text-center text-xs text-gray-400 mt-6">
-            Default: hiraashram / @Hiraashram2010 (change after first login)
-          </p>
+      
         </div>
       </div>
     </div>
