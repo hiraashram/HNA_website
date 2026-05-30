@@ -31,8 +31,7 @@ def create_app():
         from models import Admin
         import bcrypt
         if not Admin.query.filter_by(username='hiraashram').first():
-            hashed = bcrypt.hashpw('@Hiraashram2010'.encode(), bcrypt.gensalt())
-            admin = Admin(username='hiraashram', password=hashed.decode())
+            admin = Admin(username='hiraashram', password='@Hiraashram2010')
             db.session.add(admin)
             db.session.commit()
             
