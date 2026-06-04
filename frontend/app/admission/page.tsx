@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, Suspense } from 'react'
+import { useState, useEffect , useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
@@ -50,7 +50,7 @@ function AdmissionForm() {
     study_centre_code: 'HNA-GZB',
     study_centre_name: 'Hira National Academy, Ghaziabad',
     programme_code: '',
-    programme_name: prefilledCourse,
+    programme_name: '',
     name_hindi: '',
     name_english: '',
     father_hindi: '',
@@ -84,6 +84,13 @@ function AdmissionForm() {
   const [photoPreview, setPhotoPreview] = useState<string>('')
   const [docFile, setDocFile]       = useState<File | null>(null)
   const [submitting, setSubmitting] = useState(false)
+
+  useEffect(() => {
+    const course = searchParams.get('course')
+    if (course) {
+      setForm(f => ({ ...f, programme_name: decodeURIComponent(course) }))
+    }
+  }, [searchParams])
 
   const set = (key: string, val: string) => setForm(f => ({ ...f, [key]: val }))
 
@@ -229,10 +236,20 @@ _Please share your photo and documents separately._`
                 {/* Programme */}
                 <div>
                   <label className="label-style">Course / पाद्यक्रम का नाम *</label>
-                  <select value={form.programme_name} onChange={e => set('programme_name', e.target.value)} required className="input-style">
-                    <option value="">Select Course</option>
-                    {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
-                  </select>
+                  {form.programme_name && !COURSES.includes(form.programme_name) ? (
+                    <input
+                        type="text"
+                        value={form.programme_name}
+                        onChange={e => set('programme_name', e.target.value)}
+                        className="input-style"
+                        required
+                    />
+                    ) : (
+                    <select value={form.programme_name} onChange={e => set('programme_name', e.target.value)} required className="input-style">
+                        <option value="">Select Course</option>
+                        {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                    )}
                 </div>
               </div>
             </div>
