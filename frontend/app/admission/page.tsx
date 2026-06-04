@@ -470,8 +470,69 @@ _Please share your photo and documents separately._`
               </svg>
               {submitting ? 'Opening WhatsApp...' : 'Submit via WhatsApp'}
             </button>
-            <p className="text-xs text-gray-400 mt-3">
+           <p className="text-xs text-gray-400 mt-3">
               WhatsApp will open with your pre-filled form details
+            </p>
+
+            <div className="flex items-center gap-4 my-4">
+              <div className="flex-1 h-px bg-gray-200" />
+              <span className="text-gray-400 text-sm">OR</span>
+              <div className="flex-1 h-px bg-gray-200" />
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                const subject = `Admission Form – ${form.programme_name} – ${form.name_english}`
+                const body = `ADMISSION FORM – Hira National Academy
+━━━━━━━━━━━━━━━━━━━━━━
+                Session: ${form.session} ${form.session_year}
+                Course Applied: ${form.programme_name}
+
+                PERSONAL DETAILS
+                Name (Hindi): ${form.name_hindi}
+                Name (English): ${form.name_english}
+                Father's Name (Hindi): ${form.father_hindi}
+                Father's Name (English): ${form.father_english}
+                Gender: ${form.gender}
+                Date of Birth: ${form.dob}
+                Nationality: ${form.nationality}
+                Medium: ${form.medium}
+
+                CONTACT
+                Phone: ${form.phone}
+                Email: ${form.email}
+                Aadhar No.: ${form.aadhar}
+
+                ADDRESS
+                Permanent: ${form.permanent_address}, Pin: ${form.permanent_pincode}
+                Local: ${form.local_address || form.permanent_address}, Pin: ${form.local_pincode || form.permanent_pincode}
+
+                EDUCATIONAL QUALIFICATION
+                ${qualifications.filter(r => r.exam).map((r, i) => `${i+1}. ${r.exam} | Year: ${r.year} | Roll: ${r.rollNo} | ${r.board} | ${r.subject} | ${r.percentage}%`).join('\n')}
+
+                Last Exam: ${form.last_exam_name} | Year: ${form.last_exam_year} | Roll No: ${form.last_exam_roll}
+
+                ${form.medical_registration ? `Medical Registration: ${form.medical_registration}` : ''}
+
+                Place: ${form.declaration_place}
+                Date: ${form.declaration_date}
+
+                        ━━━━━━━━━━━━━━━━━━━━━━
+                Note: Please attach your photo, Aadhar card and marksheets with this email.`
+
+                window.location.href = `mailto:info.hiraashram@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+              }}
+              className="inline-flex items-center gap-3 px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-2xl transition-colors shadow-lg"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              Submit via Email
+            </button>
+            <p className="text-xs text-gray-400 mt-3">
+              Your email app will open with pre-filled form details.<br/>
+              Please attach your documents before sending.
             </p>
           </div>
 
