@@ -44,7 +44,7 @@ export default function HomePage() {
           </div>
 
           {/* ── Main grid ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: '32px', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '32px', alignItems: 'center' }}>
 
             {/* Left — Text */}
             <div>
@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
 
             {/* Right — Desktop card (hidden on mobile) */}
-            <div className="hidden lg:block">
+            <div>
               <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(74,130,34,0.3)', filter: 'blur(40px)', borderRadius: '24px' }} />
                 <div style={{ position: 'relative', backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '24px', padding: '32px', textAlign: 'center' }}>
