@@ -9,7 +9,7 @@ const tabs = [
   { key: 'NDDY',     label: 'NDDY Courses',      icon: '🕊️', desc: 'Gandhi National Academy of Naturopathy' },
   { key: 'MSME',     label: 'MSME Courses',icon: '🏡', desc: 'MSME & Self Courses' },
   { key: 'COMPUTER', label: 'Computer Courses',  icon: '💻', desc: 'Skill Enhancement Programs' },
-  { key: 'University', label: 'University Courses', desc: 'Affiliated University Courses' },
+  { key: 'University', label: 'University Courses',icon: '🎓', desc: 'Affiliated University Courses' },
 ]
 
 interface Course {
@@ -26,7 +26,7 @@ interface Course {
 export default function CoursesPage() {
   const [activeTab, setActiveTab] = useState('DNYS')
   const [courses, setCourses] = useState<Course[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -42,7 +42,7 @@ export default function CoursesPage() {
     <>
       {/* Header */}
       <div className="hero-gradient pt-28 pb-16 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-leaf-pattern" />
+        <div className="absolute inset-0 opacity-10" />
         <div className="relative max-w-3xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
             <span className="text-amber-300 text-sm">📚 Our Programmes</span>
