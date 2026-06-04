@@ -57,10 +57,22 @@ export default function HomePage() {
         </div>
 
        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 items-center">
 
-          {/* Photo — only visible on mobile, shown first */}
-            <div className="lg:hidden flex justify-center mb-4">
+              {/* Photo — mobile only, shown FIRST */}
+              <div className="mobile-only flex justify-center mb-2">
+                <div className="relative inline-block">
+                  <div className="w-32 h-44 rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
+                    <img src="/owner.png" alt="Founder" className="w-full h-full object-cover object-top" />
+                  </div>
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-amber-400 text-forest-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
+                    🌿 Founder & Director
+                  </div>
+                </div>
+              </div>
+
+              {/* Text */}
+              <div className="animate-fade-up">
               <div className="relative inline-block">
                 <div className="w-32 h-44 rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
                   <img src="/owner.png" alt="Founder" className="w-full h-full object-cover object-top" />
@@ -109,8 +121,8 @@ export default function HomePage() {
               </div>
             </div>
 
-           {/* Hero Card — only on desktop */}
-              <div className="hidden lg:block">
+          {/* Hero Card — desktop only */}
+              <div className="desktop-only">
               <div className="relative">
                 <div className="absolute inset-0 bg-forest-500/30 blur-2xl rounded-3xl" />
                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-3 sm:p-5 lg:p-8 max-w-sm mx-auto lg:max-w-none">
