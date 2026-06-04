@@ -1,15 +1,10 @@
 'use client'
-import { useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+
 
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeUnDQfZBUjsa58F4ANKlzDX9rKO4u-jiYphPrhWsHpoglQvA/viewform'
 
 function AdmissionRedirect() {
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    window.open(GOOGLE_FORM_URL, '_blank')
-  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-cream">
