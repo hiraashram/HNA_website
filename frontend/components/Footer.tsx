@@ -64,7 +64,7 @@ export default function Footer() {
                 <div>
                   <span>121 New Gandhi Nagar, Nehru Nagar 3,<br />Ghaziabad – 201001, U.P.</span>
                   <a
-                    href="https://maps.app.goo.gl/AF1WNpDr3A9hn8yR6"
+                    href="https://maps.app.goo.gl/PmgcYY2fRc6qhX5V7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 flex items-center gap-1.5 px-3 py-1.5 bg-forest-700 hover:bg-forest-600 text-amber-400 hover:text-amber-300 rounded-lg text-xs font-semibold transition-colors w-fit"
