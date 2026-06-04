@@ -500,14 +500,13 @@ _Please share your photo and documents separately._`
             <button
               type="button"
               onClick={() => {
-                const subject = `Admission Form – ${form.programme_name} – ${form.name_english}`
+                const subject = `Admission Form - ${form.programme_name} - ${form.name_english}`
                 const q = qualifications
                     .filter(r => r.exam)
                     .map((r, i) => `${i+1}. ${r.exam} | Year: ${r.year} | Roll: ${r.rollNo} | ${r.board} | ${r.subject} | ${r.percentage}%`)
                     .join('\n')
 
-                const body = 
-                `ADMISSION FORM – Hira National Academy
+                const body = `ADMISSION FORM - Hira National Academy
                 ================================
                 Session: ${form.session} ${form.session_year}
                 Course Applied: ${form.programme_name}
@@ -542,7 +541,9 @@ _Please share your photo and documents separately._`
                 ================================
                 Note: Please attach photo, Aadhar card and marksheets with this email.`
 
-                window.open(`mailto:info.hiraashram@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`)
+                const a = document.createElement('a')
+                a.href = `mailto:info.hiraashram@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+                a.click()
                 }}
               className="inline-flex items-center gap-3 px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-2xl transition-colors shadow-lg"
             >
