@@ -102,15 +102,30 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-forest-500/30 blur-2xl rounded-3xl" />
                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
                   <div className="text-center mb-6">
-                    <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white/30 shadow-lg">
-                    <img
-                      src="/logo.png"
-                      alt="Hira National Academy Logo"
-                      className="w-full h-full object-cover"
-                    />
+                   {/* Owner Photo */}
+                  <div className="relative inline-block mb-4">
+                    <div className="w-40 h-48 mx-auto rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
+                      <img
+                        src="/owner.png"
+                        alt="Founder - Hira Nisargopchar Ashram"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-amber-400 text-forest-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
+                      🌿 Founder & Director
+                    </div>
                   </div>
-                    <h3 className="text-white font-heading text-xl font-semibold">Hira National Academy</h3>
-                    <p className="text-gray-300 text-sm mt-1">Naturopathy & Yoga</p>
+
+                  {/* Logo + Name below photo */}
+                  <div className="flex items-center justify-center gap-2 mt-5">
+                    <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                      <img src="/logo.png" alt="HNA Logo" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-heading text-base font-semibold">Hira National Academy</h3>
+                      <p className="text-gray-300 text-xs">Naturopathy & Yoga</p>
+                    </div>
+                  </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {stats.map(s => (
