@@ -44,7 +44,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen hero-gradient flex items-center overflow-hidden">
+      <section className="relative hero-gradient flex items-center overflow-hidden pt-20 pb-10">
         {/* Background organic shapes */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-10 w-72 h-72 rounded-full bg-forest-600/20 blur-3xl animate-float" />
@@ -56,8 +56,21 @@ export default function HomePage() {
 
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+
+          {/* Photo — only visible on mobile, shown first */}
+            <div className="lg:hidden flex justify-center mb-4">
+              <div className="relative inline-block">
+                <div className="w-32 h-44 rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
+                  <img src="/owner.png" alt="Founder" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-amber-400 text-forest-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
+                  🌿 Founder & Director
+                </div>
+              </div>
+            </div>
+
             {/* Text */}
             <div className="animate-fade-up">
               <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
@@ -96,8 +109,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Hero Card */}
-            <div className="block mt-8 lg:mt-0 w-full">
+           {/* Hero Card — only on desktop */}
+              <div className="hidden lg:block">
               <div className="relative">
                 <div className="absolute inset-0 bg-forest-500/30 blur-2xl rounded-3xl" />
                 <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-3 sm:p-5 lg:p-8 max-w-sm mx-auto lg:max-w-none">
