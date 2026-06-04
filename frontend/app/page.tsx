@@ -104,7 +104,7 @@ export default function HomePage() {
                   <div className="text-center mb-6">
                    {/* Owner Photo */}
                   <div className="relative inline-block mb-4">
-                    <div className="w-40 h-48 mx-auto rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
+                   <div className="w-56 h-72 mx-auto rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
                       <img
                         src="/owner.png"
                         alt="Founder - Hira Nisargopchar Ashram"
