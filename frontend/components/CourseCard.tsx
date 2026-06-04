@@ -25,9 +25,9 @@ const affiliationColors: Record<string, string> = {
 }
 
 const affiliationLabel: Record<string, string> = {
-  ABPCP:    'ABPCP Affiliated',
-  GNAP:     'GNAP Affiliated',
-  MESS:     'Residential',
+  DNYS:    'DNYS Affiliated',
+  NDDY:     'NDDY Affiliated',
+  MSME:     'Residential',
   COMPUTER: 'Skill Enhancement',
 }
 
@@ -40,9 +40,9 @@ export default function CourseCard({ course }: CourseCardProps) {
     <div className="bg-white rounded-2xl border border-forest-100 shadow-sm card-lift overflow-hidden flex flex-col h-full">
       {/* Color bar */}
       <div className={`h-1.5 w-full ${
-        course.affiliation === 'ABPCP'    ? 'bg-forest-500'  :
-        course.affiliation === 'GNAP'     ? 'bg-amber-500'   :
-        course.affiliation === 'MESS'     ? 'bg-earth-500'   :
+        course.affiliation === 'DNYS'    ? 'bg-forest-500'  :
+        course.affiliation === 'NDDY'     ? 'bg-amber-500'   :
+        course.affiliation === 'MSME'     ? 'bg-earth-500'   :
         'bg-blue-500'
       }`} />
 
@@ -84,9 +84,7 @@ export default function CourseCard({ course }: CourseCardProps) {
         {/* CTA */}
         <div className="flex gap-2 mt-auto">
           <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
+           href={`/admission?course=${encodeURIComponent(course.title)}`}
             className="flex-1 py-2.5 bg-forest-600 hover:bg-forest-700 text-white text-sm font-semibold rounded-xl text-center transition-colors"
           >
             Enroll Now
