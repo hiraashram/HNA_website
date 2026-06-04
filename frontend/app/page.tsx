@@ -57,7 +57,7 @@ export default function HomePage() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Text */}
             <div className="animate-fade-up">
               <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
@@ -97,14 +97,14 @@ export default function HomePage() {
             </div>
 
             {/* Hero Card */}
-            <div className="block">
+            <div className="block mt-8 lg:mt-0">
               <div className="relative">
                 <div className="absolute inset-0 bg-forest-500/30 blur-2xl rounded-3xl" />
-                <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
+                <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-4 sm:p-6 lg:p-8">
                   <div className="text-center mb-6">
                    {/* Owner Photo */}
                   <div className="relative inline-block mb-4">
-                   <div className="w-56 h-72 lg:w-56 lg:h-72 md:w-48 md:h-60 sm:w-40 sm:h-52 mx-auto rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
+                   <div className="w-36 h-48 sm:w-44 sm:h-56 md:w-48 md:h-60 lg:w-56 lg:h-72 mx-auto rounded-2xl overflow-hidden border-4 border-amber-400/60 shadow-xl">
                       <img
                         src="/owner.png"
                         alt="Founder - Hira Nisargopchar Ashram"
@@ -129,7 +129,7 @@ export default function HomePage() {
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {stats.map(s => (
-                      <div key={s.label} className="bg-white/10 rounded-xl p-4 text-center">
+                      <div key={s.label} className="bg-white/10 rounded-xl p-2 sm:p-4 text-center">
                         <div className="text-amber-400 font-heading font-bold text-2xl">{s.value}</div>
                         <div className="text-gray-300 text-xs mt-1">{s.label}</div>
                       </div>
