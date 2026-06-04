@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
@@ -38,7 +38,7 @@ interface QualRow {
   percentage: string
 }
 
-export default function AdmissionPage() {
+function AdmissionForm() {
   const searchParams = useSearchParams()
   const prefilledCourse = searchParams.get('course') || ''
   const photoRef = useRef<HTMLInputElement>(null)
@@ -508,5 +508,13 @@ _Please share your photo and documents separately._`
         }
       `}</style>
     </>
+  )
+}
+
+export default function AdmissionPage() {
+  return (
+    <Suspense fallback={<div className="pt-32 text-center">Loading...</div>}>
+      <AdmissionForm />
+    </Suspense>
   )
 }

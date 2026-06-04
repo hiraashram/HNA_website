@@ -9,8 +9,9 @@ const navLinks = [
   { href: '/about',      label: 'About' },
   { href: '/courses',    label: 'Courses' },
   { href: '/gallery',    label: 'Gallery' },
-  { href: '/consulting', label: 'Consult' },
   { href: '/admission', label: 'Admission' },
+  { href: '/consulting', label: 'Consult' },
+  
 ]
 
 export default function Navbar() {
