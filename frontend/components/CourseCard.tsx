@@ -84,7 +84,9 @@ export default function CourseCard({ course }: CourseCardProps) {
         {/* CTA */}
         <div className="flex gap-2 mt-auto">
           <a
-           href={`/admission?course=${encodeURIComponent(course.title)}`}
+           href="https://docs.google.com/forms/d/e/1FAIpQLSeUnDQfZBUjsa58F4ANKlzDX9rKO4u-jiYphPrhWsHpoglQvA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
             className="flex-1 py-2.5 bg-forest-600 hover:bg-forest-700 text-white text-sm font-semibold rounded-xl text-center transition-colors"
           >
             Enroll Now
