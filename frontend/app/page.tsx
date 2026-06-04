@@ -137,7 +137,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-4 p-3 bg-white/10 rounded-xl">
                     <p className="text-gray-200 text-xs text-center">
-                      🏛 Affiliated with ABPCP & Gandhi National Academy of Naturopathy
+                      🏛 Affiliated with DNYS & Gandhi National Academy of Naturopathy
                     </p>
                   </div>
                 </div>
