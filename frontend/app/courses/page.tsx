@@ -24,7 +24,7 @@ interface Course {
 }
 
 export default function CoursesPage() {
-  const [activeTab, setActiveTab] = useState('ABPCP')
+  const [activeTab, setActiveTab] = useState('DNYS')
   const [courses, setCourses] = useState<Course[]>([])
   const [loading, setLoading] = useState(true)
 
