@@ -61,7 +61,21 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex gap-3">
                 <span className="text-amber-400 mt-0.5">📍</span>
-                <span>121 New Gandhi Nagar, Nehru Nagar 3,<br />Ghaziabad – 201001, U.P.</span>
+                <div>
+                  <span>121 New Gandhi Nagar, Nehru Nagar 3,<br />Ghaziabad – 201001, U.P.</span>
+                  <a
+                    href="https://maps.app.goo.gl/AF1WNpDr3A9hn8yR6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 flex items-center gap-1.5 px-3 py-1.5 bg-forest-700 hover:bg-forest-600 text-amber-400 hover:text-amber-300 rounded-lg text-xs font-semibold transition-colors w-fit"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                      <circle cx="12" cy="11" r="3"/>
+                    </svg>
+                    Get Directions
+                  </a>
+                </div>
               </li>
               <li className="flex gap-3">
                 <span className="text-amber-400">📱</span>
