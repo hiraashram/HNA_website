@@ -8,17 +8,18 @@
 
 ## 🏗️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 16 + TypeScript + Tailwind CSS |
-| Backend | Flask (Python 3.13) |
-| Database | Railway PostgreSQL |
-| Image Storage | Cloudinary |
-| Frontend Hosting | Netlify |
-| Backend Hosting | Railway |
-| Authentication | JWT (Flask-JWT-Extended) |
-| Password Security | bcrypt |
-| Communication | WhatsApp API |
+| Layer | Technology | Hosting |
+|---|---|---|
+| Frontend | Next.js 16 + TypeScript + Tailwind CSS | Railway |
+| Backend | Flask (Python 3.13) | Railway |
+| Database | PostgreSQL | Railway |
+| Image Storage | Cloudinary | Cloudinary |
+| Authentication | JWT (Flask-JWT-Extended) | — |
+| Password Security | bcrypt | — |
+| Communication | WhatsApp API | — |
+| Domain | hiraashram.com | GoDaddy |
+
+> **All services (Frontend + Backend + Database) are hosted on Railway.**
 
 ---
 
@@ -26,14 +27,14 @@
 
 ```
 hna-academy/
-├── frontend/                        # Next.js app → deployed on Netlify
+├── frontend/                        # Next.js app → Railway (serene-fulfillment)
 │   ├── app/
 │   │   ├── page.tsx                 # Home page
 │   │   ├── about/page.tsx           # About Academy
 │   │   ├── courses/page.tsx         # Courses (5 tabs – dynamic)
 │   │   ├── gallery/page.tsx         # Gallery (Cloudinary images)
 │   │   ├── consulting/page.tsx      # Consultation + WhatsApp
-│   │   ├── admission/page.tsx       # Google Form admission
+│   │   ├── admission/page.tsx       # Google Form admission redirect
 │   │   └── admin/                   # Protected Admin Panel
 │   │       ├── page.tsx             # Login
 │   │       ├── layout.tsx           # Sidebar layout
@@ -50,17 +51,18 @@ hna-academy/
 │   │   └── SectionHeader.tsx
 │   ├── lib/
 │   │   └── api.ts                   # API calls + WhatsApp helpers
-│   └── public/
-│       ├── logo.png                 # Academy logo
-│       └── owner.png                # Founder photo
+│   ├── public/
+│   │   ├── logo.png                 # Academy logo
+│   │   └── owner.png                # Founder photo
+│   └── netlify.toml                 # (kept for reference, not used)
 │
-└── backend/                         # Flask API → deployed on Railway
+└── backend/                         # Flask API → Railway (HNA_website)
     ├── app.py                       # Main Flask app
     ├── models.py                    # Database models
     ├── config.py                    # Configuration
     ├── extensions.py                # db + jwt instances
     ├── requirements.txt
-    ├── Procfile                     # Railway deployment
+    ├── Procfile                     # Railway: gunicorn app:app
     └── routes/
         ├── auth.py                  # Login / JWT
         ├── courses.py               # Course CRUD
@@ -88,7 +90,7 @@ pip install -r requirements.txt
 
 # Create .env file
 cp .env.example .env
-# Fill in your actual values in .env
+# Fill in your actual values
 
 # Run backend
 python app.py
@@ -126,37 +128,50 @@ npm run dev
 
 ---
 
-## ☁️ Deployment
+## ☁️ Railway Deployment (All Services)
 
-### Backend → Railway
+All three services are deployed on **Railway** under project: `resilient-reprieve`
 
-1. Push code to GitHub
-2. Go to railway.app → New Project → GitHub Repo
-3. Set **Root Directory** to `backend`
-4. Add environment variables in Railway → Variables tab:
-   - `DATABASE_URL` = internal PostgreSQL URL from Railway
-   - `JWT_SECRET_KEY` = your secret key
-   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
-   - `WHATSAPP_NUMBER` = `918796309503`
-5. Railway auto-deploys using `Procfile`
-6. Settings → Networking → Generate Domain → copy URL
+| Service | Name | URL |
+|---|---|---|
+| Frontend | serene-fulfillment | hiraashram.com |
+| Backend | HNA_website | hnawebsite-production.up.railway.app |
+| Database | Postgres | Internal Railway PostgreSQL |
 
-### Frontend → Netlify
+### Deploy Backend
 
-1. Push code to GitHub
-2. Go to netlify.com → Add New Site → GitHub
-3. Set **Base directory** to `frontend`
-4. Add environment variables:
-   - `NEXT_PUBLIC_API_URL` = your Railway backend URL
-   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = `918796309503`
-5. Deploy!
+1. Railway → Project → **HNA_website** service
+2. Root Directory: `backend`
+3. Start Command: `gunicorn app:app --bind 0.0.0.0:$PORT`
+4. Environment Variables:
+```
+DATABASE_URL          = postgresql://postgres:...@postgres.railway.internal:5432/railway
+JWT_SECRET_KEY        = your-secret-key
+CLOUDINARY_CLOUD_NAME = your-cloud-name
+CLOUDINARY_API_KEY    = your-api-key
+CLOUDINARY_API_SECRET = your-api-secret
+WHATSAPP_NUMBER       = 918796309503
+```
 
-### Custom Domain (GoDaddy → Netlify)
+### Deploy Frontend
 
-| DNS Record | Type | Name | Value |
-|---|---|---|---|
-| A Record | A | @ | 75.2.60.5 |
-| CNAME | CNAME | www | your-site.netlify.app |
+1. Railway → Project → **serene-fulfillment** service
+2. Root Directory: `frontend`
+3. Build Command: `npm run build`
+4. Start Command: `npm run start`
+5. Environment Variables:
+```
+NEXT_PUBLIC_API_URL         = https://hnawebsite-production.up.railway.app
+NEXT_PUBLIC_WHATSAPP_NUMBER = 918796309503
+```
+
+### Custom Domain Setup (GoDaddy → Railway)
+
+| Type | Name | Value |
+|---|---|---|
+| A | @ | 69.46.46.81 |
+| CNAME | www | cxrypehm.up.railway.app |
+| TXT | _railway-verify | railway-verify=121cdc8efe7061d270d29ac24a15063... |
 
 ---
 
@@ -164,16 +179,16 @@ npm run dev
 
 **URL:** `hiraashram.com/admin`
 
-**Login credentials:**
+**Login:**
 - Username: `hiraashram`
-- Password: *(set in database)*
+- Password: *(stored in Railway PostgreSQL)*
 
 **Admin can manage:**
 - ✅ Add / Edit / Delete / Hide courses
-- ✅ Upload gallery images (stored on Cloudinary)
+- ✅ Upload gallery images (Cloudinary)
 - ✅ Edit About page sections
 - ✅ Add / Delete student testimonials
-- ✅ All changes reflect on website instantly
+- ✅ All changes live instantly
 
 ---
 
@@ -193,11 +208,19 @@ npm run dev
 
 **WhatsApp Number:** +91 8796309503
 
-- Every **Enroll Now** button → opens WhatsApp with pre-filled course enquiry
-- **Book Appointment** → pre-filled appointment message
-- **Consulting page** → custom message with concern
-- **Floating button** → visible on all pages
-- **Admission Form** → Google Form with document upload
+- **Enroll Now** → WhatsApp with course enquiry
+- **Book Appointment** → WhatsApp appointment message
+- **Consulting page** → Custom concern message
+- **Floating button** → Visible on all pages
+
+---
+
+## 📝 Admission Form
+
+Google Form (supports file upload):
+**https://docs.google.com/forms/d/e/1FAIpQLSeUnDQfZBUjsa58F4ANKlzDX9rKO4u-jiYphPrhWsHpoglQvA/viewform**
+
+Form responses go to: `info.hiraashram@gmail.com`
 
 ---
 
@@ -225,25 +248,18 @@ npm run dev
 
 ---
 
-## 🛠️ Cloudinary Setup
-
-1. Sign up at cloudinary.com (free)
-2. Dashboard → copy Cloud Name, API Key, API Secret
-3. Add to backend `.env`
-4. Images upload to `hna_academy/` folder automatically
-
----
-
 ## 🔗 Important Links
 
 | Service | Link |
 |---|---|
 | Live Website | https://hiraashram.com |
 | Admin Panel | https://hiraashram.com/admin |
+| Backend API | https://hnawebsite-production.up.railway.app |
 | Admission Form | https://docs.google.com/forms/d/e/1FAIpQLSeUnDQfZBUjsa58F4ANKlzDX9rKO4u-jiYphPrhWsHpoglQvA/viewform |
-| Railway Backend | https://hnawebsite-production.up.railway.app |
 | YouTube | https://www.youtube.com/@hiranisargopcharashram1449 |
 | Facebook | https://www.facebook.com/hiranisargopchar |
+| Railway Dashboard | https://railway.app |
+| Cloudinary Dashboard | https://cloudinary.com |
 
 ---
 
@@ -252,6 +268,7 @@ npm run dev
 - **YouTube:** Hira Nisargopchar Ashram
 - **Facebook:** Hira Nisargopchar
 - **WhatsApp:** +91 8796309503
+- **Email:** info.hiraashram@gmail.com
 
 ---
 
