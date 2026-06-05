@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     icon: '/logo.png',
     apple: '/logo.png',
   },
+  verification: {
+    google: 'kgE2LGSTGtgHM2xgFjkucXlTnpSEem9tjXqQjdIRtGA',
+  },
   openGraph: {
     title: 'Hira Nisargopchar Ashram | Naturopathy & Yoga',
     description: 'Learn natural healing. Live naturally.',
@@ -38,3 +41,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
