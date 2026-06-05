@@ -32,10 +32,10 @@ const features = [
 ]
 
 const courseHighlights = [
-  { name: 'C.E.N.Y.', full: 'Certificate in Elementary Naturopathy & Yoga', duration: '6 Months', affil: 'ABPCP' },
-  { name: 'C.N.Y.T.', full: 'Certificate in Naturopathy & Yoga Technique',   duration: '1 Year',   affil: 'ABPCP' },
-  { name: 'DNYS',     full: 'Diploma in Naturopathy & Yogic Science',          duration: '3.5 Years', affil: 'ABPCP' },
-  { name: 'NDDY',     full: 'Diploma in Naturopathy and Yoga',                 duration: '3 Years',  affil: 'GNAP'  },
+  { name: 'C.E.N.Y.', full: 'Certificate in Elementary Naturopathy & Yoga', duration: '6 Months', affil: 'DNYS' },
+  { name: 'C.N.Y.T.', full: 'Certificate in Naturopathy & Yoga Technique',   duration: '1 Year',   affil: 'DNYS' },
+  { name: 'DNYS',     full: 'Diploma in Naturopathy & Yogic Science',          duration: '3.5 Years', affil: 'DNYS' },
+  { name: 'NDDY',     full: 'Diploma in Naturopathy and Yoga',                 duration: '3 Years',  affil: 'NDDY'  },
 ]
 
 export default function HomePage() {
@@ -196,7 +196,7 @@ export default function HomePage() {
                 className="bg-white rounded-2xl p-8  border border-forest-100 card-lift group"
               >
                 <div className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full mb-4 ${
-                  c.affil === 'ABPCP' ? 'bg-forest-100 text-forest-700' : 'bg-amber-100 text-amber-700'
+                  c.affil === 'DNYS' ? 'bg-forest-100 text-forest-700' : 'bg-amber-100 text-amber-700'
                 }`}>
                   {c.affil}
                 </div>
@@ -258,13 +258,13 @@ export default function HomePage() {
             {[
               {
                 name: 'Akhil Bharti Prakritik Chikitsa Parishad',
-                abbr: 'ABPCP',
+                abbr: 'DNYS',
                 desc: 'National body for Naturopathy education offering C.E.N.Y., C.N.Y.T. and DNYS programmes.',
                 icon: '🍃',
               },
               {
                 name: 'Gandhi National Academy of Naturopathy',
-                abbr: 'GNAP',
+                abbr: 'NDDY',
                 desc: 'Academy inspired by Gandhian principles of nature cure, offering Chikitsa Sahayak and NDDY programmes.',
                 icon: '🕊️',
               },

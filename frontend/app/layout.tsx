@@ -9,10 +9,15 @@ export const metadata: Metadata = {
   title: 'Hira Nisargopchar Ashram | Naturopathy & Yoga',
   description: 'Hira National Academy (HNA) – Pioneering Naturopathy & Yoga education in Ghaziabad. Affiliated with ABPCP & Gandhi National Academy of Naturopathy.',
   keywords: 'naturopathy, yoga, diploma, certificate, HNA, Ghaziabad, nature cure, DNYS, NDDY',
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: 'Hira Nisargopchar Ashram | Naturopathy & Yoga',
     description: 'Learn natural healing. Live naturally.',
     type: 'website',
+    images: ['/logo.png'],
   },
 }
 
