@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Cookies from 'js-cookie'
 import { verifyAdmin } from '@/lib/api'
 import toast from 'react-hot-toast'
-import '../globals.css'
 
 const navItems = [
   { href: '/admin/dashboard', icon: '📊', label: 'Dashboard' },
