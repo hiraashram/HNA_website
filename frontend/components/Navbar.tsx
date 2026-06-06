@@ -18,13 +18,15 @@ export default function Navbar() {
   const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname              = usePathname()
-  if (pathname?.startsWith('/admin')) return null
+  
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  if (pathname?.startsWith('/admin')) return null
 
   const isHome = pathname === '/'
 

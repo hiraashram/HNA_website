@@ -30,11 +30,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       .catch(() => { Cookies.remove('hna_token'); router.replace('/admin') })
   }, [pathname])
 
-  if (pathname === '/admin') return (
-  <div className="min-h-screen">
-    {children}
-  </div>
-)
+if (pathname === '/admin') return <>{children}</>
 
   const handleLogout = () => {
     Cookies.remove('hna_token')
