@@ -11,6 +11,7 @@ const navItems = [
   { href: '/admin/courses',   icon: '📚', label: 'Courses' },
   { href: '/admin/gallery',   icon: '🖼️', label: 'Gallery' },
   { href: '/admin/about',     icon: '📄', label: 'About Sections' },
+  { href: '/admin/vacancy', icon: '💼', label: 'Job Vacancies' },
   
 ]
 

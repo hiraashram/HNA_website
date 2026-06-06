@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
+import VacancyTicker from '@/components/VacancyTicker'
 import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <WhatsAppFloat />
         <Footer />
+        <VacancyTicker />
       </body>
     </html>
   )
