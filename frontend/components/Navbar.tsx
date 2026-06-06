@@ -18,6 +18,7 @@ export default function Navbar() {
   const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname              = usePathname()
+  if (pathname?.startsWith('/admin')) return null
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)

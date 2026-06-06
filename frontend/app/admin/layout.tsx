@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Cookies from 'js-cookie'
 import { verifyAdmin } from '@/lib/api'
 import toast from 'react-hot-toast'
+import '../globals.css'
 
 const navItems = [
   { href: '/admin/dashboard', icon: '📊', label: 'Dashboard' },
@@ -30,7 +31,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       .catch(() => { Cookies.remove('hna_token'); router.replace('/admin') })
   }, [pathname])
 
-  if (pathname === '/admin') return <>{children}</>
+  if (pathname === '/admin') return (
+  <div className="min-h-screen">
+    {children}
+  </div>
+)
 
   const handleLogout = () => {
     Cookies.remove('hna_token')
@@ -98,7 +103,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="h-14 bg-white border-b border-gray-200 flex items-center px-4 gap-4">
+        <header className="h-14 bg-white border-b border-gray-200 flex items-center px-4 gap-4 sticky top-0 z-40">
           <button className="md:hidden text-gray-600" onClick={() => setSideOpen(true)}>
             ☰
           </button>
@@ -107,7 +112,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </h1>
         </header>
 
-        <main className="flex-1 p-4 md:p-6 overflow-auto">
+        <main className="flex-1 p-4 md:p-6 overflow-auto pt-16 md:pt-6">
           {children}
         </main>
       </div>
